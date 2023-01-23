@@ -1,10 +1,12 @@
 from django import forms
 
+
 class RegistrationForm(forms.Form):
     uname = forms.CharField(max_length=100, required=True)
     email = forms.EmailField(required=True)
     pwd = forms.CharField(max_length=100, required=True)
     cpwd = forms.CharField(max_length=100, required=True)
+
 
 def validate_form(request):
     if request.method == "POST":
@@ -28,7 +30,7 @@ def validate_form(request):
             elif cpwd != pwd:
                 return "Confirm Password not match"
             else:
-                #submit the form
+                # submit the form
                 return "Form submitted successfully"
         else:
             return "Invalid form data"
